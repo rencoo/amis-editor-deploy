@@ -16,8 +16,6 @@ npm run start
 npm run build:prod
 
 # 其他
-* Editor.tsx 添加了将当前页面schema上传到接口的能力，不需要的可以删除
-
 * 安装tslib依赖是解决build报错: __spreadArray is not a function
 
 * 安装webpack-filter-warnings-plugin依赖是用来过滤无用告警: Failed to parse source map from "data" URL
