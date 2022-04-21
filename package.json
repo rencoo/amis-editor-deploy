@@ -4,8 +4,8 @@
   "description": "使用react-app-rewired打包amis-editor，方便部署",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "amis": "1.4.2-beta.6",
-    "amis-editor": "3.3.12-beta.1",
+    "amis": "^1.8.0",
+    "amis-editor": "^4.1.0-beta.4",
     "antd": "^4.19.0",
     "axios": "^0.21.1",
     "copy-to-clipboard": "^3.2.0",
@@ -57,6 +57,7 @@
     "@types/react-router-dom": "^4.3.2",
     "copy-webpack-plugin": "^10.2.4",
     "customize-cra": "^1.0.0",
+    "monaco-editor-webpack-plugin": "^7.0.1",
     "progress-bar-webpack-plugin": "^2.1.0",
     "react-app-rewire-html-webpack-plugin": "^1.1.0",
     "react-app-rewired": "^2.2.1",

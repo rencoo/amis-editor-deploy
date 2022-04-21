@@ -22,6 +22,6 @@ npm run build:prod
 
 * index.tsx不采用React.StrictMode，是因为会告警
 
-* 目前构建结果中editor.worker.js和json.worker.js资源丢失（是monaco-editor模块下的资源，暂时没发现对编辑器使用有影响）
-
 * 手机模式的预览页面暂时没有fork过来
+
+* 添加.env文件解决使用monaco-editor-webpack-plugin插件构建时，报内存相关的错误

@@ -12,6 +12,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 const rewireHtmlWebpackPlugin = require('react-app-rewire-html-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 // 自定义环境变量REACT_APP_ENV配置
 (function () {
@@ -42,6 +43,14 @@ const cdn4Html = {
     },
     {
       href: publicPath + 'amis/lib/themes/default.css',
+      rel: 'stylesheet'
+    },
+    {
+      href: publicPath + 'amis/lib/helper.css',
+      rel: 'stylesheet'
+    },
+    {
+      href: publicPath + 'amis/sdk/iconfont.css',
       rel: 'stylesheet'
     },
     {
@@ -99,7 +108,8 @@ const customPlugins = [
   }),
   new FilterWarningsPlugin({
     exclude: /Failed to parse source map/
-  })
+  }),
+  new MonacoWebpackPlugin()
 ];
 
 // 修改构建结果路径(默认是/build目录下)
