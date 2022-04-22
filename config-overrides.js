@@ -101,8 +101,16 @@ const customPlugins = [
         to: './amis/lib/themes/default.css'
       },
       {
-        from: path.resolve(__dirname, './node_modules/amis-editor/dist/style.css'),
-        to: './amis-editor/dist/style.css'
+        from: path.resolve(__dirname, './node_modules/amis/lib/helper.css'),
+        to: './amis/lib/helper.css'
+      },
+      {
+        from: path.resolve(__dirname, './node_modules/amis/sdk/iconfont.css'),
+        to: './amis/sdk/iconfont.css'
+      },
+      {
+        from: path.resolve(__dirname, './node_modules/amis-editor/dist'),
+        to: './amis-editor/dist'
       }
     ]
   }),
