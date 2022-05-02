@@ -2,8 +2,9 @@ import {Editor} from 'amis-editor';
 import {inject, observer} from 'mobx-react';
 import {IMainStore} from '../store';
 import {RouteComponentProps} from 'react-router-dom';
-import {Layout, Switch, classnames as cx, toast} from 'amis';
+import {Layout, Switch, classnames as cx, toast, Icon} from 'amis';
 import '../renderer/MyRenderer';
+import React from 'react';
 
 let currentIndex = -1;
 
@@ -24,6 +25,7 @@ const schemaUrl = `${host}/schema.json`;
 export default inject('store')(
     observer(function ({store, location, history, match}: {store: IMainStore} & RouteComponentProps<{id: string}>) {
         const index: number = parseInt(match.params.id, 10);
+        const editorRef: any = React.createRef();
 
         if (index !== currentIndex) {
             currentIndex = index;
@@ -37,6 +39,18 @@ export default inject('store')(
 
         function exit() {
             history.push(`/${store.pages[index].path}`);
+        }
+
+        function undo() {
+            if (typeof editorRef.current.undo === 'function') {
+                editorRef.current.undo();
+            }
+        }
+
+        function redo() {
+            if (typeof editorRef.current.redo === 'function') {
+                editorRef.current.redo();
+            }
         }
 
         function renderHeader() {
@@ -63,6 +77,13 @@ export default inject('store')(
                     </div> */}
 
                     <div className="editor-header-btns">
+                        <div className={cx('btn-item')} onClick={undo}>
+                            <Icon icon={'undo'}></Icon>
+                        </div>
+
+                        <div className={cx('btn-item')} onClick={redo}>
+                            <Icon icon={'redo'}></Icon>
+                        </div>
                         <div className={cx('btn-item')} onClick={save}>
                             保存
                         </div>
@@ -78,6 +99,7 @@ export default inject('store')(
         return (
             <Layout header={renderHeader()} headerFixed={false}>
                 <Editor
+                    ref={editorRef}
                     theme={'cxd'}
                     preview={store.preview}
                     value={store.schema}
